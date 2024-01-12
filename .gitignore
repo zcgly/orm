@@ -19,3 +19,6 @@
 
 # Go workspace file
 go.work
+/.idea/modules.xml
+/.idea/orm.iml
+/.idea/vcs.xml
