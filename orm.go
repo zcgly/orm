@@ -4,6 +4,10 @@ import (
 	"gorm.io/gorm"
 )
 
+func NewSession(db *gorm.DB) *gorm.DB {
+	return db.Session(&gorm.Session{NewDB: true})
+}
+
 func First[T any](db *gorm.DB, model *T, hs ...func(db *gorm.DB) *gorm.DB) *gorm.DB {
 	db = Execute(db, hs...)
 	return db.First(model)
