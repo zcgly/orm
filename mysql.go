@@ -8,8 +8,8 @@ import (
 	"gorm.io/gorm/schema"
 )
 
-func NewMysqlDB(host string, port int, dbName, dbUser, dbPass string) *gorm.DB {
-	dsn := BuildMysqlDsn(host, port, dbName, dbUser, dbPass)
+func NewMysqlDB(host, dbName, dbUser, dbPass string) *gorm.DB {
+	dsn := BuildMysqlDsn(host, dbName, dbUser, dbPass)
 	ret, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{SingularTable: true},
 		Logger:         logger.Default.LogMode(logger.Warn),
@@ -20,7 +20,7 @@ func NewMysqlDB(host string, port int, dbName, dbUser, dbPass string) *gorm.DB {
 	return ret
 }
 
-func BuildMysqlDsn(host string, port int, dbName, dbUser, dbPass string) string {
-	return fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local",
-		dbUser, dbPass, host, port, dbName)
+func BuildMysqlDsn(host, dbName, dbUser, dbPass string) string {
+	return fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
+		dbUser, dbPass, host, dbName)
 }

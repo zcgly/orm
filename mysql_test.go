@@ -5,5 +5,5 @@ import (
 )
 
 func TestNewMysqlDB(t *testing.T) {
-	_ = NewMysqlDB("localhost", 3306, "lsxyun_we", "lsxyun_we", "lsxyun123$")
+	_ = NewMysqlDB("localhost:3306", "lsxyun_we", "lsxyun_we", "lsxyun123$")
 }
