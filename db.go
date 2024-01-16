@@ -28,5 +28,5 @@ func SetDebug(db *gorm.DB, debug bool) {
 	if debug {
 		level = logger.Info
 	}
-	db.Logger.LogMode(level)
+	db.Logger = db.Logger.LogMode(level)
 }
