@@ -22,3 +22,4 @@ go.work
 /.idea/modules.xml
 /.idea/orm.iml
 /.idea/vcs.xml
+/test.db
